@@ -23,5 +23,5 @@ cd count-up-timer
 Run the script
 
 ```bash
-python2.7 CutMainWindow.py
+python CutMainWindow.py
 ```
