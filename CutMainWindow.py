@@ -18,14 +18,13 @@ along with Count Up Timer. If not, see <http://www.gnu.org/licenses/>"""
 import sys
 import time
 from CutUtilQt import *
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtWidgets, QtCore
 
-class CutMainWindow(QtGui.QMainWindow):
+class CutMainWindow(QtWidgets.QMainWindow):
 
 	def __init__(self):
 		#general initialization
-		QtGui.QMainWindow.__init__(self)
+		super().__init__()
 		self.setWindowTitle("Count Up Timer")
 		#private variables
 		self._timeDisplay = TimeDisplay()
@@ -34,10 +33,10 @@ class CutMainWindow(QtGui.QMainWindow):
 		self._timer = QtCore.QTimer(self)
 		self._timer.setInterval(1000)
 		#ui building
-		containerLayout = QtGui.QVBoxLayout()
+		containerLayout = QtWidgets.QVBoxLayout()
 		containerLayout.addLayout(self._timeDisplay)
 		containerLayout.addLayout(self._controlPanel)
-		self._centralWidget = QtGui.QWidget()
+		self._centralWidget = QtWidgets.QWidget()
 		self._centralWidget.setLayout(containerLayout)
 		self.setCentralWidget(self._centralWidget)
 		#event handling
@@ -68,6 +67,6 @@ class CutMainWindow(QtGui.QMainWindow):
 	def displayTime(self):
 		self._timeDisplay.setText(time.strftime('%H:%M:%S', time.gmtime(self._seconds)))
 
-application = QtGui.QApplication(sys.argv)
+application = QtWidgets.QApplication(sys.argv)
 cutMainWindow = CutMainWindow()
 application.exec_()

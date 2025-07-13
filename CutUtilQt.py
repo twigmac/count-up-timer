@@ -15,14 +15,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Count Up Timer. If not, see <http://www.gnu.org/licenses/>"""
 
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+from PyQt5 import QtWidgets
 
-class TimeDisplay(QtGui.QHBoxLayout):
+class TimeDisplay(QtWidgets.QHBoxLayout):
 
 	def __init__(self):
 		super(TimeDisplay, self).__init__() # See [1]
-		self._lcd = QtGui.QLCDNumber()
+		self._lcd = QtWidgets.QLCDNumber()
 		self._lcd.setNumDigits(8)
 		self._text = "00:00:00"
 		self.setText(self._text)
@@ -30,18 +29,18 @@ class TimeDisplay(QtGui.QHBoxLayout):
 	
 	def setText(self, str):
 		self._text = str
-		self._lcd.display(QtCore.QString(str))
+		self._lcd.display(str)
 	
 	def getText(self):
 		return self._text
 
-class ControlPanel(QtGui.QHBoxLayout):
+class ControlPanel(QtWidgets.QHBoxLayout):
 
 	def __init__(self):
 		super(ControlPanel, self).__init__() # See [1]
-		self._startButton = QtGui.QPushButton("Start")
-		self._stopButton = QtGui.QPushButton("Stop")
-		self._resetButton = QtGui.QPushButton("Reset")
+		self._startButton = QtWidgets.QPushButton("Start")
+		self._stopButton = QtWidgets.QPushButton("Stop")
+		self._resetButton = QtWidgets.QPushButton("Reset")
 		self.addWidget(self._startButton)
 		self.addWidget(self._stopButton)
 		self.addWidget(self._resetButton)
